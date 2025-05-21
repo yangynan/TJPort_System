@@ -1,0 +1,955 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tian.tianjava.mapper.Findmapper">
+
+    <select id="show">
+        select * from wind_speed
+    </select>
+    <!--  有多个传感器，tableid是传感器（表）的id    -->
+    <select id="find">
+        SELECT * FROM
+        <choose>
+            <when test="table == 0 and tableid == 1">
+                wind_speed
+            </when>
+            <when test="table == 0 and tableid == 2">
+                wind_speed_2
+            </when>
+            <when test="table == 0 and tableid == 3">
+                wind_speed_3
+            </when>
+            <when test="table == 1 and tableid == 1">
+                wind_direc
+            </when>
+            <when test="table == 1 and tableid == 2">
+                wind_direc_2
+            </when>
+            <when test="table == 1 and tableid == 3">
+                wind_direc_3
+            </when>
+            <when test="table == 2 and tableid == 1">
+                wind_duration
+            </when>
+            <when test="table == 2 and tableid == 2">
+                wind_duration_2
+            </when>
+            <when test="table == 2 and tableid == 3">
+                wind_duration_3
+            </when>
+            <when test="table == 3 and tableid == 1">
+                wave_height
+            </when>
+            <when test="table == 3 and tableid == 2">
+                wave_height_2
+            </when>
+            <when test="table == 3 and tableid == 3">
+                wave_height_3
+            </when>
+            <when test="table == 4 and tableid == 1">
+                wave_cycle
+            </when>
+            <when test="table == 4 and tableid == 2">
+                wave_cycle_2
+            </when>
+            <when test="table == 4 and tableid == 3">
+                wave_cycle_3
+            </when>
+            <when test="table == 5 and tableid == 1">
+                wave_direc
+            </when>
+            <when test="table == 5 and tableid == 2">
+                wave_direc_2
+            </when>
+            <when test="table == 5 and tableid == 3">
+                wave_direc_3
+            </when>
+            <when test="table == 6 and tableid == 1">
+                flow_velocity
+            </when>
+            <when test="table == 6 and tableid == 2">
+                flow_velocity_2
+            </when>
+            <when test="table == 6 and tableid == 3">
+                flow_velocity_3
+            </when>
+            <when test="table == 7 and tableid == 1">
+                flow_direc
+            </when>
+            <when test="table == 7 and tableid == 2">
+                flow_direc_2
+            </when>
+            <when test="table == 7 and tableid == 3">
+                flow_direc_3
+            </when>
+            <when test="table == 8 and tableid == 1">
+                water_depth
+            </when>
+            <when test="table == 8 and tableid == 2">
+                water_depth_2
+            </when>
+            <when test="table == 8 and tableid == 3">
+                water_depth_3
+            </when>
+            <when test="table == 9 and tableid == 1">
+                visibility
+            </when>
+            <when test="table == 9 and tableid == 2">
+                visibility_2
+            </when>
+            <when test="table == 9 and tableid == 3">
+                visibility_3
+            </when>
+            <when test="table == 10 and tableid == 1">
+                turbidity
+            </when>
+            <when test="table == 10 and tableid == 2">
+                turbidity_2
+            </when>
+            <when test="table == 10 and tableid == 3">
+                turbidity_3
+            </when>
+        </choose>
+        WHERE 1=1
+        <if test="day != null">
+            AND date = #{day}
+        </if>
+        <if test="time != null">
+            AND time = #{time}
+        </if>
+    </select>
+    <select id="findwhile">
+        SELECT * FROM
+        <choose>
+            <when test="table == 0 and tableid == 1">
+                wind_speed
+            </when>
+            <when test="table == 0 and tableid == 2">
+                wind_speed_2
+            </when>
+            <when test="table == 0 and tableid == 3">
+                wind_speed_3
+            </when>
+            <when test="table == 1 and tableid == 1">
+                wind_direc
+            </when>
+            <when test="table == 1 and tableid == 2">
+                wind_direc_2
+            </when>
+            <when test="table == 1 and tableid == 3">
+                wind_direc_3
+            </when>
+            <when test="table == 2 and tableid == 1">
+                wind_duration
+            </when>
+            <when test="table == 2 and tableid == 2">
+                wind_duration_2
+            </when>
+            <when test="table == 2 and tableid == 3">
+                wind_duration_3
+            </when>
+            <when test="table == 3 and tableid == 1">
+                wave_height
+            </when>
+            <when test="table == 3 and tableid == 2">
+                wave_height_2
+            </when>
+            <when test="table == 3 and tableid == 3">
+                wave_height_3
+            </when>
+            <when test="table == 4 and tableid == 1">
+                wave_cycle
+            </when>
+            <when test="table == 4 and tableid == 2">
+                wave_cycle_2
+            </when>
+            <when test="table == 4 and tableid == 3">
+                wave_cycle_3
+            </when>
+            <when test="table == 5 and tableid == 1">
+                wave_direc
+            </when>
+            <when test="table == 5 and tableid == 2">
+                wave_direc_2
+            </when>
+            <when test="table == 5 and tableid == 3">
+                wave_direc_3
+            </when>
+            <when test="table == 6 and tableid == 1">
+                flow_velocity
+            </when>
+            <when test="table == 6 and tableid == 2">
+                flow_velocity_2
+            </when>
+            <when test="table == 6 and tableid == 3">
+                flow_velocity_3
+            </when>
+            <when test="table == 7 and tableid == 1">
+                flow_direc
+            </when>
+            <when test="table == 7 and tableid == 2">
+                flow_direc_2
+            </when>
+            <when test="table == 7 and tableid == 3">
+                flow_direc_3
+            </when>
+            <when test="table == 8 and tableid == 1">
+                water_depth
+            </when>
+            <when test="table == 8 and tableid == 2">
+                water_depth_2
+            </when>
+            <when test="table == 8 and tableid == 3">
+                water_depth_3
+            </when>
+            <when test="table == 9 and tableid == 1">
+                visibility
+            </when>
+            <when test="table == 9 and tableid == 2">
+                visibility_2
+            </when>
+            <when test="table == 9 and tableid == 3">
+                visibility_3
+            </when>
+            <when test="table == 10 and tableid == 1">
+                turbidity
+            </when>
+            <when test="table == 10 and tableid == 2">
+                turbidity_2
+            </when>
+            <when test="table == 10 and tableid == 3">
+                turbidity_3
+            </when>
+        </choose>
+        WHERE STR_TO_DATE(CONCAT(date, ' ', time), '%Y-%m-%d %H:%i:%s')
+        BETWEEN STR_TO_DATE(CONCAT(#{day1}, ' ', #{time1}), '%Y-%m-%d %H:%i:%s')
+        AND STR_TO_DATE(CONCAT(#{day2}, ' ', #{time2}), '%Y-%m-%d %H:%i:%s');
+    </select>
+    <!--    <select id="pageFind">-->
+    <!--        select * from wind_speed limit #{pageNum},#{pageSize}-->
+    <!--    </select>-->
+    <select id="pageFind">
+        SELECT * FROM
+        <choose>
+            <when test="table == 0 and tableid == 1">
+                wind_speed
+            </when>
+            <when test="table == 0 and tableid == 2">
+                wind_speed_2
+            </when>
+            <when test="table == 0 and tableid == 3">
+                wind_speed_3
+            </when>
+            <when test="table == 1 and tableid == 1">
+                wind_direc
+            </when>
+            <when test="table == 1 and tableid == 2">
+                wind_direc_2
+            </when>
+            <when test="table == 1 and tableid == 3">
+                wind_direc_3
+            </when>
+            <when test="table == 2 and tableid == 1">
+                wind_duration
+            </when>
+            <when test="table == 2 and tableid == 2">
+                wind_duration_2
+            </when>
+            <when test="table == 2 and tableid == 3">
+                wind_duration_3
+            </when>
+            <when test="table == 3 and tableid == 1">
+                wave_height
+            </when>
+            <when test="table == 3 and tableid == 2">
+                wave_height_2
+            </when>
+            <when test="table == 3 and tableid == 3">
+                wave_height_3
+            </when>
+            <when test="table == 4 and tableid == 1">
+                wave_cycle
+            </when>
+            <when test="table == 4 and tableid == 2">
+                wave_cycle_2
+            </when>
+            <when test="table == 4 and tableid == 3">
+                wave_cycle_3
+            </when>
+            <when test="table == 5 and tableid == 1">
+                wave_direc
+            </when>
+            <when test="table == 5 and tableid == 2">
+                wave_direc_2
+            </when>
+            <when test="table == 5 and tableid == 3">
+                wave_direc_3
+            </when>
+            <when test="table == 6 and tableid == 1">
+                flow_velocity
+            </when>
+            <when test="table == 6 and tableid == 2">
+                flow_velocity_2
+            </when>
+            <when test="table == 6 and tableid == 3">
+                flow_velocity_3
+            </when>
+            <when test="table == 7 and tableid == 1">
+                flow_direc
+            </when>
+            <when test="table == 7 and tableid == 2">
+                flow_direc_2
+            </when>
+            <when test="table == 7 and tableid == 3">
+                flow_direc_3
+            </when>
+            <when test="table == 8 and tableid == 1">
+                water_depth
+            </when>
+            <when test="table == 8 and tableid == 2">
+                water_depth_2
+            </when>
+            <when test="table == 8 and tableid == 3">
+                water_depth_3
+            </when>
+            <when test="table == 9 and tableid == 1">
+                visibility
+            </when>
+            <when test="table == 9 and tableid == 2">
+                visibility_2
+            </when>
+            <when test="table == 9 and tableid == 3">
+                visibility_3
+            </when>
+            <when test="table == 10 and tableid == 1">
+                turbidity
+            </when>
+            <when test="table == 10 and tableid == 2">
+                turbidity_2
+            </when>
+            <when test="table == 10 and tableid == 3">
+                turbidity_3
+            </when>
+        </choose>
+        WHERE 1=1
+        <if test="day != null">
+            AND date = #{day}
+        </if>
+        <if test="time != null">
+            AND time = #{time}
+        </if>
+        limit #{pageNum},#{pageSize}
+    </select>
+
+
+    <select id="count">
+        SELECT count(*) FROM
+        <choose>
+            <when test="table == 0 and tableid == 1">
+                wind_speed
+            </when>
+            <when test="table == 0 and tableid == 2">
+                wind_speed_2
+            </when>
+            <when test="table == 0 and tableid == 3">
+                wind_speed_3
+            </when>
+            <when test="table == 1 and tableid == 1">
+                wind_direc
+            </when>
+            <when test="table == 1 and tableid == 2">
+                wind_direc_2
+            </when>
+            <when test="table == 1 and tableid == 3">
+                wind_direc_3
+            </when>
+            <when test="table == 2 and tableid == 1">
+                wind_duration
+            </when>
+            <when test="table == 2 and tableid == 2">
+                wind_duration_2
+            </when>
+            <when test="table == 2 and tableid == 3">
+                wind_duration_3
+            </when>
+            <when test="table == 3 and tableid == 1">
+                wave_height
+            </when>
+            <when test="table == 3 and tableid == 2">
+                wave_height_2
+            </when>
+            <when test="table == 3 and tableid == 3">
+                wave_height_3
+            </when>
+            <when test="table == 4 and tableid == 1">
+                wave_cycle
+            </when>
+            <when test="table == 4 and tableid == 2">
+                wave_cycle_2
+            </when>
+            <when test="table == 4 and tableid == 3">
+                wave_cycle_3
+            </when>
+            <when test="table == 5 and tableid == 1">
+                wave_direc
+            </when>
+            <when test="table == 5 and tableid == 2">
+                wave_direc_2
+            </when>
+            <when test="table == 5 and tableid == 3">
+                wave_direc_3
+            </when>
+            <when test="table == 6 and tableid == 1">
+                flow_velocity
+            </when>
+            <when test="table == 6 and tableid == 2">
+                flow_velocity_2
+            </when>
+            <when test="table == 6 and tableid == 3">
+                flow_velocity_3
+            </when>
+            <when test="table == 7 and tableid == 1">
+                flow_direc
+            </when>
+            <when test="table == 7 and tableid == 2">
+                flow_direc_2
+            </when>
+            <when test="table == 7 and tableid == 3">
+                flow_direc_3
+            </when>
+            <when test="table == 8 and tableid == 1">
+                water_depth
+            </when>
+            <when test="table == 8 and tableid == 2">
+                water_depth_2
+            </when>
+            <when test="table == 8 and tableid == 3">
+                water_depth_3
+            </when>
+            <when test="table == 9 and tableid == 1">
+                visibility
+            </when>
+            <when test="table == 9 and tableid == 2">
+                visibility_2
+            </when>
+            <when test="table == 9 and tableid == 3">
+                visibility_3
+            </when>
+            <when test="table == 10 and tableid == 1">
+                turbidity
+            </when>
+            <when test="table == 10 and tableid == 2">
+                turbidity_2
+            </when>
+            <when test="table == 10 and tableid == 3">
+                turbidity_3
+            </when>
+        </choose>
+        WHERE 1=1
+        <if test="day != null">
+            AND date = #{day}
+        </if>
+        <if test="time != null">
+            AND time = #{time}
+        </if>
+    </select>
+
+    <select id="pageFindall">
+        SELECT * FROM
+        <choose>
+            <when test="table == 0">
+                wind_speed
+            </when>
+            <when test="table == 1">
+                wind_direc
+            </when>
+            <when test="table == 2">
+                wind_duration
+            </when>
+            <when test="table == 3">
+                wave_height
+            </when>
+            <when test="table == 4">
+                wave_cycle
+            </when>
+            <when test="table == 5">
+                wave_direc
+            </when>
+            <when test="table == 6">
+                flow_velocity
+            </when>
+            <when test="table == 7">
+                flow_direc
+            </when>
+            <when test="table == 8">
+                water_depth
+            </when>
+            <when test="table == 9">
+                visibility
+            </when>
+            <when test="table == 10">
+                turbidity
+            </when>
+        </choose>
+        WHERE 1=1
+        <if test="day != null">
+            AND date = #{day}
+        </if>
+        <if test="time != null">
+            AND time = #{time}
+        </if>
+        union all
+        SELECT * FROM
+        <choose>
+            <when test="table == 0">
+                wind_speed_2
+            </when>
+            <when test="table == 1">
+                wind_direc_2
+            </when>
+            <when test="table == 2">
+                wind_duration_2
+            </when>
+            <when test="table == 3">
+                wave_height_2
+            </when>
+            <when test="table == 4">
+                wave_cycle_2
+            </when>
+            <when test="table == 5">
+                wave_direc_2
+            </when>
+            <when test="table == 6">
+                flow_velocity_2
+            </when>
+            <when test="table == 7">
+                flow_direc_2
+            </when>
+            <when test="table == 8">
+                water_depth_2
+            </when>
+            <when test="table == 9">
+                visibility_2
+            </when>
+            <when test="table == 10">
+                turbidity_2
+            </when>
+        </choose>
+        WHERE 1=1
+        <if test="day != null">
+            AND date = #{day}
+        </if>
+        <if test="time != null">
+            AND time = #{time}
+        </if>
+        union all
+        SELECT * FROM
+        <choose>
+            <when test="table == 0">
+                wind_speed_3
+            </when>
+            <when test="table == 1">
+                wind_direc_3
+            </when>
+            <when test="table == 2">
+                wind_duration_3
+            </when>
+            <when test="table == 3">
+                wave_height_3
+            </when>
+            <when test="table == 4">
+                wave_cycle_3
+            </when>
+            <when test="table == 5">
+                wave_direc_3
+            </when>
+            <when test="table == 6">
+                flow_velocity_3
+            </when>
+            <when test="table == 7">
+                flow_direc_3
+            </when>
+            <when test="table == 8">
+                water_depth_3
+            </when>
+            <when test="table == 9">
+                visibility_3
+            </when>
+            <when test="table == 10">
+                turbidity_3
+            </when>
+        </choose>
+        WHERE 1=1
+        <if test="day != null">
+            AND date = #{day}
+        </if>
+        <if test="time != null">
+            AND time = #{time}
+        </if>
+        limit #{pageNum},#{pageSize}
+    </select>
+
+    <select id="count2">
+        SELECT count(*) FROM
+        <choose>
+            <when test="table == 0 and tableid == 1">
+                wind_speed
+            </when>
+            <when test="table == 0 and tableid == 2">
+                wind_speed_2
+            </when>
+            <when test="table == 0 and tableid == 3">
+                wind_speed_3
+            </when>
+            <when test="table == 1 and tableid == 1">
+                wind_direc
+            </when>
+            <when test="table == 1 and tableid == 2">
+                wind_direc_2
+            </when>
+            <when test="table == 1 and tableid == 3">
+                wind_direc_3
+            </when>
+            <when test="table == 2 and tableid == 1">
+                wind_duration
+            </when>
+            <when test="table == 2 and tableid == 2">
+                wind_duration_2
+            </when>
+            <when test="table == 2 and tableid == 3">
+                wind_duration_3
+            </when>
+            <when test="table == 3 and tableid == 1">
+                wave_height
+            </when>
+            <when test="table == 3 and tableid == 2">
+                wave_height_2
+            </when>
+            <when test="table == 3 and tableid == 3">
+                wave_height_3
+            </when>
+            <when test="table == 4 and tableid == 1">
+                wave_cycle
+            </when>
+            <when test="table == 4 and tableid == 2">
+                wave_cycle_2
+            </when>
+            <when test="table == 4 and tableid == 3">
+                wave_cycle_3
+            </when>
+            <when test="table == 5 and tableid == 1">
+                wave_direc
+            </when>
+            <when test="table == 5 and tableid == 2">
+                wave_direc_2
+            </when>
+            <when test="table == 5 and tableid == 3">
+                wave_direc_3
+            </when>
+            <when test="table == 6 and tableid == 1">
+                flow_velocity
+            </when>
+            <when test="table == 6 and tableid == 2">
+                flow_velocity_2
+            </when>
+            <when test="table == 6 and tableid == 3">
+                flow_velocity_3
+            </when>
+            <when test="table == 7 and tableid == 1">
+                flow_direc
+            </when>
+            <when test="table == 7 and tableid == 2">
+                flow_direc_2
+            </when>
+            <when test="table == 7 and tableid == 3">
+                flow_direc_3
+            </when>
+            <when test="table == 8 and tableid == 1">
+                water_depth
+            </when>
+            <when test="table == 8 and tableid == 2">
+                water_depth_2
+            </when>
+            <when test="table == 8 and tableid == 3">
+                water_depth_3
+            </when>
+            <when test="table == 9 and tableid == 1">
+                visibility
+            </when>
+            <when test="table == 9 and tableid == 2">
+                visibility_2
+            </when>
+            <when test="table == 9 and tableid == 3">
+                visibility_3
+            </when>
+            <when test="table == 10 and tableid == 1">
+                turbidity
+            </when>
+            <when test="table == 10 and tableid == 2">
+                turbidity_2
+            </when>
+            <when test="table == 10 and tableid == 3">
+                turbidity_3
+            </when>
+        </choose>
+        WHERE STR_TO_DATE(CONCAT(date, ' ', time), '%Y-%m-%d %H:%i:%s')
+        BETWEEN STR_TO_DATE(CONCAT(#{day1}, ' ', #{time1}), '%Y-%m-%d %H:%i:%s')
+        AND STR_TO_DATE(CONCAT(#{day2}, ' ', #{time2}), '%Y-%m-%d %H:%i:%s');
+    </select>
+
+
+    <select id="pageFindtimeALL">
+        SELECT * FROM
+        <choose>
+            <when test="table == 0">
+                wind_speed
+            </when>
+            <when test="table == 1">
+                wind_direc
+            </when>
+            <when test="table == 2">
+                wind_duration
+            </when>
+            <when test="table == 3">
+                wave_height
+            </when>
+            <when test="table == 4">
+                wave_cycle
+            </when>
+            <when test="table == 5">
+                wave_direc
+            </when>
+            <when test="table == 6">
+                flow_velocity
+            </when>
+            <when test="table == 7">
+                flow_direc
+            </when>
+            <when test="table == 8">
+                water_depth
+            </when>
+            <when test="table == 9">
+                visibility
+            </when>
+            <when test="table == 10">
+                turbidity
+            </when>
+        </choose>
+        WHERE STR_TO_DATE(CONCAT(date, ' ', time), '%Y-%m-%d %H:%i:%s')
+        BETWEEN STR_TO_DATE(CONCAT(#{day1}, ' ', #{time1}), '%Y-%m-%d %H:%i:%s')
+        AND STR_TO_DATE(CONCAT(#{day2}, ' ', #{time2}), '%Y-%m-%d %H:%i:%s')
+        union all
+        SELECT * FROM
+        <choose>
+            <when test="table == 0">
+                wind_speed_2
+            </when>
+            <when test="table == 1">
+                wind_direc_2
+            </when>
+            <when test="table == 2">
+                wind_duration_2
+            </when>
+            <when test="table == 3">
+                wave_height_2
+            </when>
+            <when test="table == 4">
+                wave_cycle_2
+            </when>
+            <when test="table == 5">
+                wave_direc_2
+            </when>
+            <when test="table == 6">
+                flow_velocity_2
+            </when>
+            <when test="table == 7">
+                flow_direc_2
+            </when>
+            <when test="table == 8">
+                water_depth_2
+            </when>
+            <when test="table == 9">
+                visibility_2
+            </when>
+            <when test="table == 10">
+                turbidity_2
+            </when>
+        </choose>
+        WHERE STR_TO_DATE(CONCAT(date, ' ', time), '%Y-%m-%d %H:%i:%s')
+        BETWEEN STR_TO_DATE(CONCAT(#{day1}, ' ', #{time1}), '%Y-%m-%d %H:%i:%s')
+        AND STR_TO_DATE(CONCAT(#{day2}, ' ', #{time2}), '%Y-%m-%d %H:%i:%s')
+        union all
+        SELECT * FROM
+        <choose>
+            <when test="table == 0">
+                wind_speed_3
+            </when>
+            <when test="table == 1">
+                wind_direc_3
+            </when>
+            <when test="table == 2">
+                wind_duration_3
+            </when>
+            <when test="table == 3">
+                wave_height_3
+            </when>
+            <when test="table == 4">
+                wave_cycle_3
+            </when>
+            <when test="table == 5">
+                wave_direc_3
+            </when>
+            <when test="table == 6">
+                flow_velocity_3
+            </when>
+            <when test="table == 7">
+                flow_direc_3
+            </when>
+            <when test="table == 8">
+                water_depth_3
+            </when>
+            <when test="table == 9">
+                visibility_3
+            </when>
+            <when test="table == 10">
+                turbidity_3
+            </when>
+        </choose>
+        WHERE STR_TO_DATE(CONCAT(date, ' ', time), '%Y-%m-%d %H:%i:%s')
+        BETWEEN STR_TO_DATE(CONCAT(#{day1}, ' ', #{time1}), '%Y-%m-%d %H:%i:%s')
+        AND STR_TO_DATE(CONCAT(#{day2}, ' ', #{time2}), '%Y-%m-%d %H:%i:%s')
+        limit #{pageNum},#{pageSize}
+    </select>
+
+    <select id="pageFindtime">
+        SELECT * FROM
+        <choose>
+            <when test="table == 0 and tableid == 1">
+                wind_speed
+            </when>
+            <when test="table == 0 and tableid == 2">
+                wind_speed_2
+            </when>
+            <when test="table == 0 and tableid == 3">
+                wind_speed_3
+            </when>
+            <when test="table == 1 and tableid == 1">
+                wind_direc
+            </when>
+            <when test="table == 1 and tableid == 2">
+                wind_direc_2
+            </when>
+            <when test="table == 1 and tableid == 3">
+                wind_direc_3
+            </when>
+            <when test="table == 2 and tableid == 1">
+                wind_duration
+            </when>
+            <when test="table == 2 and tableid == 2">
+                wind_duration_2
+            </when>
+            <when test="table == 2 and tableid == 3">
+                wind_duration_3
+            </when>
+            <when test="table == 3 and tableid == 1">
+                wave_height
+            </when>
+            <when test="table == 3 and tableid == 2">
+                wave_height_2
+            </when>
+            <when test="table == 3 and tableid == 3">
+                wave_height_3
+            </when>
+            <when test="table == 4 and tableid == 1">
+                wave_cycle
+            </when>
+            <when test="table == 4 and tableid == 2">
+                wave_cycle_2
+            </when>
+            <when test="table == 4 and tableid == 3">
+                wave_cycle_3
+            </when>
+            <when test="table == 5 and tableid == 1">
+                wave_direc
+            </when>
+            <when test="table == 5 and tableid == 2">
+                wave_direc_2
+            </when>
+            <when test="table == 5 and tableid == 3">
+                wave_direc_3
+            </when>
+            <when test="table == 6 and tableid == 1">
+                flow_velocity
+            </when>
+            <when test="table == 6 and tableid == 2">
+                flow_velocity_2
+            </when>
+            <when test="table == 6 and tableid == 3">
+                flow_velocity_3
+            </when>
+            <when test="table == 7 and tableid == 1">
+                flow_direc
+            </when>
+            <when test="table == 7 and tableid == 2">
+                flow_direc_2
+            </when>
+            <when test="table == 7 and tableid == 3">
+                flow_direc_3
+            </when>
+            <when test="table == 8 and tableid == 1">
+                water_depth
+            </when>
+            <when test="table == 8 and tableid == 2">
+                water_depth_2
+            </when>
+            <when test="table == 8 and tableid == 3">
+                water_depth_3
+            </when>
+            <when test="table == 9 and tableid == 1">
+                visibility
+            </when>
+            <when test="table == 9 and tableid == 2">
+                visibility_2
+            </when>
+            <when test="table == 9 and tableid == 3">
+                visibility_3
+            </when>
+            <when test="table == 10 and tableid == 1">
+                turbidity
+            </when>
+            <when test="table == 10 and tableid == 2">
+                turbidity_2
+            </when>
+            <when test="table == 10 and tableid == 3">
+                turbidity_3
+            </when>
+        </choose>
+        WHERE STR_TO_DATE(CONCAT(date, ' ', time), '%Y-%m-%d %H:%i:%s')
+        BETWEEN STR_TO_DATE(CONCAT(#{day1}, ' ', #{time1}), '%Y-%m-%d %H:%i:%s')
+        AND STR_TO_DATE(CONCAT(#{day2}, ' ', #{time2}), '%Y-%m-%d %H:%i:%s')
+        limit #{pageNum},#{pageSize}
+    </select>
+
+    <!--  有多个传感器，tableid是传感器（表）的id    -->
+    <!--    <select id="getWindSpeed">-->
+    <!--        SELECT * FROM-->
+    <!--        <choose>-->
+    <!--            <when test="tableid == '1'">-->
+    <!--                wind_speed-->
+    <!--            </when>-->
+    <!--            <when test="tableid == '2'">-->
+    <!--                wind_speed_2-->
+    <!--            </when>-->
+    <!--            <otherwise>-->
+    <!--                wind_speed_3-->
+    <!--            </otherwise>-->
+    <!--        </choose>-->
+    <!--        WHERE 1=1-->
+    <!--        <if test="day != null">-->
+    <!--            AND day = #{day}-->
+    <!--        </if>-->
+    <!--        <if test="time != null">-->
+    <!--            AND time = #{time}-->
+    <!--        </if>-->
+    <!--    </select>-->
+</mapper>
